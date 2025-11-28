@@ -1,0 +1,41 @@
+# Node
+node_modules/
+npm-debug.log
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Buildy
+dist/
+build/
+coverage/
+
+# Environment
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# Vite
+*.local
+
+# Logs
+logs
+*.log
+*.pid
+*.seed
+*.pid.lock
+
+# Editor
+.vscode/
+.idea/
+.DS_Store
+
+# Docker
+docker-data/
+docker-volume/
+docker-compose.override.yml
+
+# Runtime generated
+*.tsbuildinfo

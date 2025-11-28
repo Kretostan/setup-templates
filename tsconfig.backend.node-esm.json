@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./dist",
+
+    "module": "NodeNext",
+    "target": "ESNext",
+    "moduleResolution": "nodenext",
+
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+
+    "noUnusedLocals": true,
+    "noImplicitReturns": true,
+    "esModuleInterop": true,
+
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": false,
+    "strict": true,
+    "types": ["node"]
+  },
+  "compileOnSave": true,
+  "include": ["src"]
+}

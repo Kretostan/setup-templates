@@ -1,0 +1,77 @@
+name: name
+
+services:
+  # ================= BACKEND =================
+  backend:
+    build:
+      context: ./backend              # katalog z kodem backendu
+      dockerfile: Dockerfile          # Dockerfile backendu
+    environment:
+      # standardowo: produkcja; jak chcesz dev, zmieniasz w .env / compose
+      NODE_ENV: production
+      # port, na którym backend NASŁUCHUJE WEWNĄTRZ kontenera
+      PORT: 3000
+      # typowe zmienne konfiguracyjne backendu
+      DATABASE_URL: ${DATABASE_URL}
+      JWT_SECRET: ${JWT_SECRET}
+    ports:
+      # HOST:KONTENER
+      # na hoście będzie : BACKEND_PORT (domyślnie 3000),
+      # w kontenerze backend słucha na 3000 (PORT powyżej)
+      - "${BACKEND_PORT:-3000}:3000"
+    depends_on:
+      # backend wystartuje po bazie (w sensie kolejności kontenerów,
+      # ale i tak warto w kodzie backendu mieć retry logic)
+      - db
+    networks:
+      - app
+
+  # ================= FRONTEND =================
+  frontend:
+    build:
+      context: ./frontend              # katalog z kodem frontu (Vite)
+      dockerfile: Dockerfile           # Dockerfile frontu (Vite + nginx)
+      args:
+        # zmienna build-time dla Vite (import.meta.env.VITE_API_URL)
+        # w .env ustawiasz VITE_API_URL, tu tylko ją przekazujesz
+        VITE_API_URL: ${VITE_API_URL}
+    ports:
+      # frontend ma nginx na porcie 80 w kontenerze,
+      # na hoście będzie FRONTEND_PORT
+      - "${FRONTEND_PORT:-8080}:80"
+    depends_on:
+      - backend                        # frontend buduje się / startuje po backendzie
+    networks:
+      - app
+
+  # ================= BAZA DANYCH (opcjonalnie) =================
+  # Jeśli masz lokalną bazę w compose (np. Postgres):
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      # UWAGA: port wystawiony na hosta tylko jeśli chcesz
+      # łączyć się np. przez DBeaver / psql z hosta.
+      # Jak nie potrzebujesz – możesz to wykomentować.
+      - "5432:5432"
+    volumes:
+      # persystencja danych bazy pomiędzy restartami kontenerów
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - app
+
+# ================= SIECI =================
+networks:
+  app:
+    # domyślna sieć bridge – wystarczy zazwyczaj.
+    # jak nic nie wpiszesz, Docker i tak stworzy chaterinho_default,
+    # ale tu robimy to jawnie dla czytelności.
+    driver: bridge
+
+# ================= WOLUMINY =================
+volumes:
+  db_data:
+  # wolumin named – Docker sam zarządza ścieżką na hoście
