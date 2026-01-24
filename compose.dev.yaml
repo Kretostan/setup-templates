@@ -1,0 +1,16 @@
+services:
+  backend:
+    # Montujemy katalog z kodem z hosta do kontenera
+    volumes:
+      - ./backend:/app
+    # Zamiast produkcyjnego "yarn start" odpalamy dev server
+    command: yarn dev
+    environment:
+      NODE_ENV: development
+  frontend:
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    command: yarn dev --host 0.0.0.0 --port 5173
+    environment:
+      NODE_ENV: development
