@@ -1,5 +1,5 @@
 {
-  "name": "setup-templates",
+  "name": "@kretostan/setup-templates",
   "version": "0.1.0",
   "description": "Installer that adds my project template files into an existing repo",
   "type": "module",
@@ -13,6 +13,7 @@
   "engines": {
     "node": ">=24"
   },
+  "engineStrict": true,
   "license": "MIT",
   "dependencies": {
     "chalk": "^5.6.2",
