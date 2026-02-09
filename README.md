@@ -1,4 +1,4 @@
-# kretostan-setup
+# setup-templates
 
 🚀 Zero-config CLI for quickly adding standard project files to an existing repository.
 
@@ -6,21 +6,21 @@
 
 ## ✨ What is it?
 
-`kretostan-setup` is a CLI tool that adds ready-made, proven configuration templates to your project in seconds.
+`setup-templates` is a CLI tool that adds ready-made, proven configuration templates to your project in seconds.
 Instead of copying files between repositories - run one command and choose what you want to install.
 
-## 📦 What can you install?
+## 🧰 What's included?
 
-- **Backend** - TypeScript configuration
-- **Frontend** - TypeScript + Node.js configuration
-- **Docker** - `Dockerfile` and `docker-compose`
-- **Nginx** - reverse proxy
-- **Base** - MIT license, Biome config, README
+- **Express** - TypeScript configuration for Express.js
+- **Frontend** - React + Vite + TypeScript (development & build only)
+- **Docker** - `Dockerfile` and `docker-compose` for development and production
+- **Nginx** - production server for frontend build and API reverse proxy
+- **Base** - MIT license, Biome config and .gitignore
 
 ## ▶️ Quick start
 
 ```bash
-npx kretostan-setup
+npx @kretostan/setup-templates
 ```
 
 That's it. The CLI will launch an interactive menu where you select which templates to add to your project.
@@ -28,20 +28,20 @@ That's it. The CLI will launch an interactive menu where you select which templa
 ### 🔁 Specific version (reproducible builds)
 
 ```bash
-npx kretostan-setup@1.2.3
+npx @kretostan/setup-templates@1.2.3
 ```
 
 ### 🧑‍💻 Local usage (teams / CI)
 
 ```bash
-npm install --save-dev kretostan-setup
-npx kretostan-setup
+npm install --save-dev @kretostan/setup-templates
+npx @kretostan/setup-templates
 ```
 
 ## 📦 What can you install?
 
 You can safely install multiple templates in the same project.
-Depending on the selected templates, kretostan-setup will add the following files and directories to your project.
+Depending on the selected templates, setup-templates will add the following files and directories to your project.
 Existing files are not overwritten without confirmation.
 
 ## 📂 What files will be created?
@@ -51,23 +51,6 @@ Existing files are not overwritten without confirmation.
 ├─ .gitignore
 ├─ biome.json
 └─ LICENSE
-```
-
-### 🖥 Backend (Node.js)
-```
-├─ .env
-├─ .env.development
-└─ tsconfig.backend.json
-```
-
-### 🌐 Frontend (React + Vite)
-```
-├─ .env
-├─ .env.development
-├─ tsconfig.app.json
-├─ tsconfig.json
-├─ tsconfig.node.json
-└─ vite.config.ts
 ```
 
 ### 🐳 Docker
@@ -80,12 +63,27 @@ Existing files are not overwritten without confirmation.
 └─ compose.yaml
 ```
 
+### 🖥 Express.js
+```
+└─ tsconfig.json
+```
+
+> Express template provides a minimal TypeScript setup, intended to be extended by the user.
+
+### 🌐 Frontend (React + Vite)
+```
+├─ tsconfig.app.json
+├─ tsconfig.json
+├─ tsconfig.node.json
+└─ vite.config.ts
+```
+
 ### 🌍 Nginx
 ```
 └─ nginx.conf
 ```
 
-## 💡 Why kretostan-setup?
+## 💡 Why setup-templates?
 
 - ⚡ works instantly via npx
 - 📦 no manual file copying
@@ -97,6 +95,9 @@ Existing files are not overwritten without confirmation.
 
 - Node.js >= 24
 - npm
+
+> (Node 24+ required due to modern Node APIs)
+
 
 ## 🛠️ Libraries used
 
