@@ -8,7 +8,8 @@
   },
   "files": [
     "bin",
-    "templates"
+    "templates",
+    "src"
   ],
   "engines": {
     "node": ">=24"
