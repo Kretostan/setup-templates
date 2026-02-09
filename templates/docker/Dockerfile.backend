@@ -1,0 +1,27 @@
+FROM node:alpine AS deps
+WORKDIR /app
+COPY package.json package-lock.json ./
+COPY frontend/package.json ./frontend/package.json
+COPY backend/package.json ./backend/package.json
+RUN npm install
+
+FROM deps AS dev
+WORKDIR /app
+COPY backend ./backend
+EXPOSE 3001
+CMD ["npm", "--workspace", "backend", "run", "dev"]
+
+FROM deps AS build
+WORKDIR /app
+COPY backend ./backend
+RUN npm --workspace backend run build
+
+FROM node:alpine AS prod
+WORKDIR /app
+COPY package.json package-lock.json ./
+COPY frontend/package.json ./frontend/package.json
+COPY backend/package.json ./backend/package.json
+RUN npm ci --omit=dev
+COPY --from=build /app/backend/dist ./backend/dist
+EXPOSE 3000
+CMD ["npm", "--workspace", "backend", "start"]

@@ -1,0 +1,41 @@
+services:
+  backend:
+    build:
+      context: .
+      target: dev
+      dockerfile: Dockerfile.backend
+    ports:
+      - "${BACKEND_PORT:-3001}:3001"
+    env_file:
+      - ./.env.development
+    environment:
+#      - NODE_ENV=${NODE_ENV:-development}
+      - PORT=${BACKEND_PORT:-3001}
+    volumes:
+      - ./backend:/app/backend
+      - backend_node_modules:/app/backend/node_modules
+    healthcheck:
+      test: ["CMD-SHELL", "exit 0"]
+      disable: true
+
+  frontend:
+    build:
+      context: .
+      target: dev
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "${FRONTEND_PORT:-5173}:5173"
+    env_file:
+      - ./.env.development
+    environment:
+      - NODE_ENV=${NODE_ENV:-development}
+      - CHOKIDAR_USEPOLLING=true
+    volumes:
+      - ./frontend:/app/frontend
+      - frontend_node_modules:/app/frontend/node_modules
+    depends_on:
+      - backend
+
+volumes:
+  backend_node_modules:
+  frontend_node_modules:

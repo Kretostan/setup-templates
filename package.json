@@ -1,0 +1,22 @@
+{
+  "name": "setup-templates",
+  "version": "0.1.0",
+  "description": "Installer that adds my project template files into an existing repo",
+  "type": "module",
+  "bin": {
+    "setup-templates": "./bin/setup-templates.mjs"
+  },
+  "files": [
+    "bin",
+    "templates"
+  ],
+  "engines": {
+    "node": ">=24"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^5.6.2",
+    "ora": "^9.1.0",
+    "prompts": "^2.4.2"
+  }
+}

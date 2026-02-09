@@ -1,38 +1,108 @@
-# Setup templates
+# kretostan-setup
 
-Zestaw szablonowych plików do szybkiego uruchamiania aplikacji **backend + frontend** za pomocą
-Docker Compose i reverse proxy Nginx.  
-Repo może służyć jako punkt startowy dla nowych projektów – wystarczy skopiować pliki i
-dostosować konfigurację pod własną aplikację.
+🚀 Zero-config CLI for quickly adding standard project files to an existing repository.
 
-> Domyślnie przykład zakłada backend w Node.js (ESM) oraz frontend w Vite + React,
-> ale szablon jest na tyle ogólny, że możesz go użyć z dowolną technologią.
+> Perfect for use with **npx** - no installation, no configuration, no pain.
 
----
+## ✨ What is it?
 
-## Zawartość
+`kretostan-setup` is a CLI tool that adds ready-made, proven configuration templates to your project in seconds.
+Instead of copying files between repositories - run one command and choose what you want to install.
 
-- `compose.yaml` – główny plik Docker Compose, definicja usług (backend, frontend, nginx itp.).
-- `compose.override.yaml` – nadpisania ustawień dla środowiska developerskiego
-  (np. montowanie kodu z hosta, inne porty).
-- `Dockerfile.backend` – szablon obrazu dla serwisu backendowego.
-- `Dockerfile.frontend` – szablon obrazu dla serwisu frontendowego.
-- `nginx.conf` – konfiguracja Nginxa pełniącego rolę reverse proxy między frontendem a backendem.
-- `.env.example` – przykładowy plik zmiennych środowiskowych; skopiuj go do `.env` i uzupełnij.
-- `.dockerignore` – pliki i katalogi pomijane przy budowaniu obrazów Dockera.
-- `.gitignore` – pliki i katalogi pomijane przez Git.
-- `tsconfig.backend.node-esm.json` – przykładowa konfiguracja TypeScript dla backendu w trybie ESM.
-- `tsconfig.frontend.vite-react.json` – przykładowa konfiguracja TS dla frontendu opartego o Vite + React.
-- `LICENSE` – licencja dla repozytorium (zmień, jeśli używasz innej).
+## 📦 What can you install?
 
----
+- **Backend** - TypeScript configuration
+- **Frontend** - TypeScript + Node.js configuration
+- **Docker** - `Dockerfile` and `docker-compose`
+- **Nginx** - reverse proxy
+- **Base** - MIT license, Biome config, README
 
-## Jak korzystać
+## ▶️ Quick start
 
-To repozytorium jest zbiorem szablonów konfiguracyjnych.  
-Możesz:
+```bash
+npx kretostan-setup
+```
 
-- po prostu podejrzeć pliki online (np. na GitHubie) i skopiować ich treść do swojego projektu, albo
-- sklonować repo i skopiować wybrane pliki do nowego projektu.
+That's it. The CLI will launch an interactive menu where you select which templates to add to your project.
 
-Po skopiowaniu plików dostosuj porty, nazwy usług, ścieżki oraz komendy w Dockerfile’ach do własnego stacku.
+### 🔁 Specific version (reproducible builds)
+
+```bash
+npx kretostan-setup@1.2.3
+```
+
+### 🧑‍💻 Local usage (teams / CI)
+
+```bash
+npm install --save-dev kretostan-setup
+npx kretostan-setup
+```
+
+## 📦 What can you install?
+
+You can safely install multiple templates in the same project.
+Depending on the selected templates, kretostan-setup will add the following files and directories to your project.
+Existing files are not overwritten without confirmation.
+
+## 📂 What files will be created?
+
+### 🧱 Base
+```
+├─ .gitignore
+├─ biome.json
+└─ LICENSE
+```
+
+### 🖥 Backend (Node.js)
+```
+├─ .env
+├─ .env.development
+└─ tsconfig.backend.json
+```
+
+### 🌐 Frontend (React + Vite)
+```
+├─ .env
+├─ .env.development
+├─ tsconfig.app.json
+├─ tsconfig.json
+├─ tsconfig.node.json
+└─ vite.config.ts
+```
+
+### 🐳 Docker
+```
+├─ Dockerfile.backend
+├─ Dockerfile.frontend
+├─ .dockerignore
+├─ Makefile
+├─ compose.dev.yaml
+└─ compose.yaml
+```
+
+### 🌍 Nginx
+```
+└─ nginx.conf
+```
+
+## 💡 Why kretostan-setup?
+
+- ⚡ works instantly via npx
+- 📦 no manual file copying
+- 🧭 interactive template selection
+- 🧩 easy to extend with new presets
+- 🧼 consistent project structure across your team
+
+## ⚙️ Requirements
+
+- Node.js >= 24
+- npm
+
+## 🛠️ Libraries used
+
+- chalk - colored terminal output
+- ora - spinners
+- prompts - interactive menu
+
+## 📄 License
+MIT

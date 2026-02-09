@@ -18,7 +18,10 @@
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": false,
     "strict": true,
-    "types": ["node"]
+    "types": ["node"],
+
+    "baseUrl": "../backend",
+    "paths": { "@/*": ["src/*"] }
   },
   "compileOnSave": true,
   "include": ["src"]
