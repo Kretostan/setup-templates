@@ -1,7 +1,7 @@
 {
   "name": "@kretostan/setup-templates",
   "version": "0.1.0",
-  "description": "Installer that adds my project template files into an existing repo",
+  "description": "Installer that adds project template files into an existing repo",
   "type": "module",
   "bin": {
     "setup-templates": "./bin/setup-templates.mjs"
