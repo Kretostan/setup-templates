@@ -27,6 +27,8 @@
     "name": "kreciko",
     "email": "kretostan@portfolio.com"
   },
+  "homepage": "https://github.com/Kretostan/setup-templates",
+  "repository": "github:Kretostan/setup-templates",
   "license": "MIT",
   "dependencies": {
     "chalk": "^5.6.2",
