@@ -4,7 +4,7 @@
   "description": "Installer that adds project template files into an existing repo",
   "type": "module",
   "bin": {
-    "setup-templates": "./bin/setup-templates.mjs"
+    "setup-templates": "bin/setup-templates.mjs"
   },
   "files": [
     "bin",
