@@ -20,7 +20,7 @@ Instead of copying files between repositories - run one command and choose what 
 ## ▶️ Quick start
 
 ```bash
-npx @kretostan/setup-templates
+npx @kreciko/setup-templates
 ```
 
 That's it. The CLI will launch an interactive menu where you select which templates to add to your project.
@@ -28,14 +28,14 @@ That's it. The CLI will launch an interactive menu where you select which templa
 ### 🔁 Specific version (reproducible builds)
 
 ```bash
-npx @kretostan/setup-templates@1.2.3
+npx @kreciko/setup-templates@1.2.3
 ```
 
 ### 🧑‍💻 Local usage (teams / CI)
 
 ```bash
-npm install --save-dev @kretostan/setup-templates
-npx @kretostan/setup-templates
+npm install --save-dev @kreciko/setup-templates
+npx @kreciko/setup-templates
 ```
 
 ## 📦 What can you install?
