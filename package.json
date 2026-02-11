@@ -1,6 +1,6 @@
 {
   "name": "@kreciko/setup-templates",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Installer that adds project template files into an existing repo",
   "type": "module",
   "bin": {
