@@ -14,6 +14,7 @@ Instead of copying files between repositories - run one command and choose what 
 - **Express** - TypeScript configuration for Express.js
 - **Frontend** - React + Vite + TypeScript (development & build only)
 - **Docker** - `Dockerfile` and `docker-compose` for development and production
+- Docs - documentation scaffolding (markdown structure + conventions)
 - **Nginx** - production server for frontend build and API reverse proxy
 - **Base** - MIT license, Biome config and .gitignore
 
@@ -47,6 +48,7 @@ Existing files are not overwritten without confirmation.
 ## 📂 What files will be created?
 
 ### 🧱 Base
+
 ```
 ├─ .gitignore
 ├─ biome.json
@@ -54,6 +56,7 @@ Existing files are not overwritten without confirmation.
 ```
 
 ### 🐳 Docker
+
 ```
 ├─ Dockerfile.backend
 ├─ Dockerfile.frontend
@@ -63,7 +66,20 @@ Existing files are not overwritten without confirmation.
 └─ compose.yaml
 ```
 
+### 📚 Docs
+
+```
+├─ README.md
+├─ api.md
+├─ architecture.md
+├─ data-model.md 
+├─ deploy.md
+├─ mvp.md
+└─ realtime.md
+```
+
 ### 🖥 Express.js
+
 ```
 └─ tsconfig.json
 ```
@@ -71,6 +87,7 @@ Existing files are not overwritten without confirmation.
 > Express template provides a minimal TypeScript setup, intended to be extended by the user.
 
 ### 🌐 Frontend (React + Vite)
+
 ```
 ├─ tsconfig.app.json
 ├─ tsconfig.json
@@ -79,6 +96,7 @@ Existing files are not overwritten without confirmation.
 ```
 
 ### 🌍 Nginx
+
 ```
 └─ nginx.conf
 ```
@@ -98,7 +116,6 @@ Existing files are not overwritten without confirmation.
 
 > (Node 24+ required due to modern Node APIs)
 
-
 ## 🛠️ Libraries used
 
 - chalk - colored terminal output
@@ -106,4 +123,5 @@ Existing files are not overwritten without confirmation.
 - prompts - interactive menu
 
 ## 📄 License
+
 MIT
